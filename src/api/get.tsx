@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { GithubUser } from '../types/types';
 
-export const getUsers = async () => {
+export const getUsers = async (): Promise<GithubUser[]> => {
     try {
         const url = `https://api.github.com/users`;
         const result = await axios.get(url, {
@@ -13,7 +14,7 @@ export const getUsers = async () => {
     }
 }
 
-export const getUser = async (username: string) => {
+export const getUser = async (username: string): Promise<GithubUser> => {
     try {
         const url = `https://api.github.com/users/${username}`;
         const result = await axios.get(url, {
@@ -29,6 +30,6 @@ export const getUser = async (username: string) => {
                 message: error.response?.message,
             })
         );
-        return {};
+        return {} as GithubUser;
     }
 };
