@@ -4,15 +4,15 @@ import { Root } from "native-base";
 
 
 import Home from "./container/HomeContainer";
-import BlankPage from "./container/BlankPageContainer";
+import User from "./container/UserContainer";
 
 const App = StackNavigator(
 	{
 		Home: { screen: Home },
-		User: { screen: BlankPage },
+		User: { screen: User },
 	},
 	{
-		initialRouteName: "Login",
+		initialRouteName: "Home",
 		headerMode: "none",
 	}
 );
