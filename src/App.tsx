@@ -6,13 +6,12 @@ import { Dimensions } from "react-native";
 const deviceWidth = Dimensions.get("window").width;
 
 import Login from "./container/LoginContainer";
-import Home from "./container/HomeContainer";
 import BlankPage from "./container/BlankPageContainer";
 import Sidebar from "./container/SidebarContainer";
 
 const Drawer = DrawerNavigator(
 	{
-		Home: { screen: Home },
+		Home: { screen: (<></>) },
 	},
 	{
 		drawerWidth: deviceWidth - 50,
