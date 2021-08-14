@@ -10,11 +10,11 @@ import {
     Right,
     Body,
     Spinner,
+	View,
 } from "native-base";
 import styles from "../styles";
 import { getUsers } from "../../api/get";
 import { GithubUser } from "../../types/types";
-
 export interface Props {
     navigation: any;
     valid: boolean;
@@ -33,7 +33,10 @@ class HomeContainer extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        getUsers().then((users) => this.setState({ users, loading: false }));
+        getUsers().then((users) => {
+			const firstUsers = users.slice(0, 4);
+			this.setState({ users: firstUsers, loading: false });
+		});
     }
 
     render() {
@@ -51,15 +54,18 @@ class HomeContainer extends React.Component<Props, State> {
                 <Content padder>
                     <Title>Top 5 Github Users</Title>
                     <Text>Tap the username to see more information</Text>
-                    {this.state.users.map((user) => (
-                        <Button
-                            primary
-                            key={user.id}
-                            onPress={this.props.navigation.navigate("User", { user })}
-                        >
-                            {user.login}
-                        </Button>
-                    ))}
+                    <View>
+                        {this.state.users.map((user) => (
+                            <Button
+                                primary
+                                key={user.id}
+								style={{ flex: 1 }}
+                                onPress={this.props.navigation.navigate("User", { user })}
+                            >
+                                {user.login}
+                            </Button>
+                        ))}
+                    </View>
                 </Content>
             </Container>
         );
