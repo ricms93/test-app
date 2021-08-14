@@ -10,8 +10,8 @@ import {
     Body,
 	Spinner,
 	View,
-	Image,
-	Label
+	Label,
+    Thumbnail
 } from "native-base";
 import styles from "../styles";
 import { GithubUser } from "../../types/types";
@@ -54,15 +54,13 @@ export default class UserContainer extends React.Component<Props, State> {
                 <Content padder>
                     <View style={{ flexDirection: 'column', flex: 3 }}>
                         <View>
-                            <Image
-                                // @ts-ignore
+                            <Thumbnail
                                 size={150}
+                                circular
                                 resizeMode={"contain"}
-                                borderRadius={100}
                                 source={{
                                     uri: this.state.user.avatar_url,
                                 }}
-                                alt="Alternate Text"
                             />
                         </View>
 						<View style={{ flexDirection: 'row' }}>
